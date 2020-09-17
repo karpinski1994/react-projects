@@ -39,20 +39,13 @@ class Board extends React.Component {
   };
 
   onDrop = (e, laneId) => {
-     console.log("e", e);
-     console.log("laneId", laneId);
     const id = e.dataTransfer.getData("id");
-    console.log("id", id);
     const tickets = this.state.tickets.filter((ticket) => {
-      console.log("ticket.id", ticket.id);
       if (ticket.id === Number(id)) {
-        console.log("ticket.id", ticket.id);
-        console.log("id", id);
         ticket.lane = laneId;
       }
       return ticket;
     });
-console.log("tickets", tickets);
     this.setState({
       ...this.state,
       tickets,
