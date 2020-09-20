@@ -20,8 +20,8 @@ class Board extends React.Component {
     this.state = {
       tickets: [],
     };
-    this.onDragOver = this.onDragOver.bind(this);
-    this.onDrop = this.onDrop.bind(this);
+    // this.onDragOver = this.onDragOver.bind(this);
+    // this.onDrop = this.onDrop.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -39,9 +39,9 @@ class Board extends React.Component {
   };
 
   onDrop = (e, laneId) => {
-    const id = e.dataTransfer.getData("id");
+    const id = parseInt(e.dataTransfer.getData("id"));
     const tickets = this.state.tickets.filter((ticket) => {
-      if (ticket.id === Number(id)) {
+      if (ticket.id === id) {
         ticket.lane = laneId;
       }
       return ticket;

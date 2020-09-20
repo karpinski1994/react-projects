@@ -2,8 +2,7 @@ import React, { Children } from "react";
 
 export default function withDataFetching(WrappedComponent) {
   class WithDataFetching extends React.Component {
-    constructor(props) {
-      super(props);
+    constructor() {
       this.state = {
         data: [],
         error: "",
