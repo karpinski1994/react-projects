@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "title": "My list",
+    "items": [
+      {
+        "id": 1,
+        "title": "computer",
+        "price": 2500,
+        "quantity": 5,
+        "listId": 1
+      },
+      {
+        "id": 2,
+        "title": "phone",
+        "price": 7500,
+        "quantity": 7,
+        "listId": 1
+      },
+      {
+        "id": 3,
+        "title": "mouse",
+        "price": 20,
+        "quantity": 57,
+        "listId": 1
+      },
+      {
+        "id": 4,
+        "title": "keyboard",
+        "price": 25,
+        "quantity": 37,
+        "listId": 1
+      }
+    ]
+  }
+]

@@ -1,8 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import withDataFetching from '../withDataFetching';
-import SubHeader from '../components/Header/SubHeader';
-import ListItem from '../components/ListItem/ListItem';
+import React from "react";
+import styled from "styled-components";
+import SubHeader from "../components/Header/SubHeader";
+import ListItem from "../components/ListItem/ListItem";
 
 const ListItemWrapper = styled.div`
   display: flex;
@@ -17,9 +16,11 @@ const Alert = styled.span`
 `;
 
 const List = ({ data, loading, error, match, history }) => {
-  const items =
-    data && data.filter(item => item.listId === parseInt(match.params.id));
 
+  const items =
+  data &&
+  data.filter((item) => item.listId === parseInt(match.params.id));
+  
   return !loading && !error ? (
     <>
       {history && (
@@ -29,15 +30,12 @@ const List = ({ data, loading, error, match, history }) => {
         />
       )}
       <ListItemWrapper>
-        {items && items.map(item => <ListItem key={item.id} data={item} />)}
+        {items && items.map((item) => <ListItem key={item.id} data={item} />)}
       </ListItemWrapper>
     </>
   ) : (
-    <Alert>{loading ? 'Loading...' : error}</Alert>
+    <Alert>{loading ? "Loading..." : error}</Alert>
   );
 };
 
-export default withDataFetching({
-  dataSource:
-    'https://my-json-server.typicode.com/pranayfpackt/-React-Projects/items',
-})(List);
+export default List;

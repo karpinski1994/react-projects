@@ -1,5 +1,4 @@
 import React from 'react';
-
 const withDataFetching = props => WrappedComponent => {
   class WithDataFetching extends React.Component {
     constructor() {
@@ -10,15 +9,13 @@ const withDataFetching = props => WrappedComponent => {
         error: '',
       };
     }
-
-    async componentDidMount() {
+    
+    componentDidMount() {
+      const data = require('./data/data.json');
       try {
-        const data = await fetch(props.dataSource);
-        const dataJSON = await data.json();
-
-        if (dataJSON) {
+        if (data) {
           this.setState({
-            data: dataJSON,
+            data: data,
             loading: false,
           });
         }

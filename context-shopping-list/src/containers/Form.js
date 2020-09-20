@@ -25,7 +25,7 @@ const Form = ({ match, history }) => (
       <form>
         <FormItem id='title' label='Title' placeholder='Insert title' />
         <FormItem
-          id='quantity'
+          id='Quantity'
           label='Quantity'
           type='number'
           placeholder='0'
