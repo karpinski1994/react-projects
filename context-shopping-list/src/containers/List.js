@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import SubHeader from "../components/Header/SubHeader";
-import ListItem from "../components/ListItem/ListItem";
+import React from 'react';
+import styled from 'styled-components';
+import SubHeader from '../components/Header/SubHeader';
+import ListItem from '../components/ListItem/ListItem';
 
 const ListItemWrapper = styled.div`
   display: flex;
@@ -15,12 +15,19 @@ const Alert = styled.span`
   text-align: center;
 `;
 
-const List = ({ data, loading, error, match, history }) => {
+const List = ({lists, loading, error, getListsRequest, match, history}) => {
+  let [items, setItems] = React.useState([]);
+  React.useEffect(() => {
+    if (!lists.length) {
+      getListsRequest();
+    }
+    
+    if (lists.length) {
+      const {items} = lists.find(({id}) => id === parseInt(match.params.id));
+      setItems(items);
+    }
+  }, [lists, getListsRequest, match]);
 
-  const items =
-  data &&
-  data.filter((item) => item.listId === parseInt(match.params.id));
-  
   return !loading && !error ? (
     <>
       {history && (
@@ -34,7 +41,7 @@ const List = ({ data, loading, error, match, history }) => {
       </ListItemWrapper>
     </>
   ) : (
-    <Alert>{loading ? "Loading..." : error}</Alert>
+    <Alert>{loading ? 'Loading...' : error}</Alert>
   );
 };
 

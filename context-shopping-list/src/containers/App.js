@@ -1,13 +1,13 @@
-import React from "react";
-import styled, { createGlobalStyle } from "styled-components";
-import { Route, Switch } from "react-router-dom";
-import Header from "../components/Header/Header";
-import Lists from "./Lists";
-import List from "./List";
-import Form from "./Form";
+import React from 'react';
+import styled, {createGlobalStyle} from 'styled-components';
+import {Route, Switch} from 'react-router-dom';
+import Header from '../components/Header/Header';
+import Lists from './Lists';
+import List from './List';
+import Form from './Form';
 import ListsContextProvider, {
   ListsContext,
-} from "../context/ListsContextProvider";
+} from '../context/ListsContextProvider';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -32,27 +32,42 @@ const App = () => (
       <Header />
       <ListsContextProvider>
         <ListsContext.Consumer>
-          {({ lists }) => {
+          {({
+            lists,
+            loading: listsLoading,
+            error: listsError,
+            getListsRequest,
+            addItems
+          }) => {
             return (
               <Switch>
                 <Route
                   exact
-                  path="/"
+                  path='/'
                   render={(props) =>
-                    lists && <Lists lists={lists} {...props} />
+                    lists && (
+                      <Lists
+                        lists={lists}
+                        loading={listsLoading}
+                        error={listsError}
+                        getListsRequest={getListsRequest}
+                        {...props}
+                      />
+                    )
                   }
                 />
-                <Route path="/list/:id/new" component={Form} />
+                <Route path='/list/:id/new' 
+                render={(props) => <Form addItems={addItems} {...props}/>}
+                />
                 <Route
-                  path="/list/:id"
+                  path='/list/:id'
                   render={(props) =>
-                    lists.length && (
+                    lists && (
                       <List
-                        data={
-                          lists.find(
-                            ({ id }) => id === parseInt(props.match.params.id)
-                          ).items
-                        }
+                        lists={lists}
+                        loading={listsLoading}
+                        error={listsError}
+                        getListsRequest={getListsRequest}
                         {...props}
                       />
                     )

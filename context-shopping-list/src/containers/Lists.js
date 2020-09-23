@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import SubHeader from '../components/Header/SubHeader';
 
 const ListWrapper = styled.div`
@@ -32,14 +32,18 @@ const Alert = styled.span`
   text-align: center;
 `;
 
-const Lists = ({ lists, loading = false, error = false, history }) => {
-
+const Lists = ({lists, loading, error, getListsRequest, match, history}) => {
+  React.useEffect(() => {
+    if (!lists.length) {
+      getListsRequest();
+    }
+  }, [lists, getListsRequest]);
   return !loading && !error ? (
     <>
       {history && <SubHeader title='Your Lists' />}
       <ListWrapper>
         {lists &&
-          lists.map(list => (
+          lists.map((list) => (
             <ListLink key={list.id} to={`list/${list.id}`}>
               <Title>{list.title}</Title>
             </ListLink>
@@ -47,9 +51,8 @@ const Lists = ({ lists, loading = false, error = false, history }) => {
       </ListWrapper>
     </>
   ) : (
-      <Alert>{loading ? 'Loading...' : error}</Alert>
-    );
-}
- 
+    <Alert>{loading ? 'Loading...' : error}</Alert>
+  );
+};
 
 export default Lists;
