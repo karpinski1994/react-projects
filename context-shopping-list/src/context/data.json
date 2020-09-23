@@ -32,5 +32,39 @@
         "listId": 1
       }
     ]
+  },
+  {
+    "id": 2,
+    "title": "Shopping",
+    "items": [
+      {
+        "id": 1,
+        "title": "bay leaf",
+        "price": 2500,
+        "quantity": 5,
+        "listId": 1
+      },
+      {
+        "id": 2,
+        "title": "allspice",
+        "price": 7500,
+        "quantity": 7,
+        "listId": 1
+      },
+      {
+        "id": 3,
+        "title": "cugetes",
+        "price": 20,
+        "quantity": 57,
+        "listId": 1
+      },
+      {
+        "id": 4,
+        "title": "milk",
+        "price": 25,
+        "quantity": 37,
+        "listId": 1
+      }
+    ]
   }
 ]
