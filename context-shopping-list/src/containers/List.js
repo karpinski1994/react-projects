@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {ListsContext} from '../context/ListsContextProvider';
 import SubHeader from '../components/Header/SubHeader';
 import ListItem from '../components/ListItem/ListItem';
 
@@ -15,7 +16,8 @@ const Alert = styled.span`
   text-align: center;
 `;
 
-const List = ({lists, loading, error, getListsRequest, match, history}) => {
+const List = ({ match, history}) => {
+  const {lists, loading, error, getListsRequest} = React.useContext(ListsContext);
   let [items, setItems] = React.useState([]);
   React.useEffect(() => {
     if (!lists.length) {
