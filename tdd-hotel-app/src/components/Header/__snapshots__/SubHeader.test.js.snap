@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the SubHeader component should render 1`] = `ShallowWrapper {}`;
+
+exports[`the SubHeader component should render with a Form btn 1`] = `ShallowWrapper {}`;
+
+exports[`the SubHeader component should render with a btns and handle the onClick event 1`] = `ShallowWrapper {}`;
+
+exports[`the SubHeader component should render with a dynamic title 1`] = `ShallowWrapper {}`;
+
+exports[`the SubHeader component should render with a goBack btn 1`] = `ShallowWrapper {}`;
+
+exports[`the SubHeader component should render with a goback btn and handle the onClick event 1`] = `ShallowWrapper {}`;

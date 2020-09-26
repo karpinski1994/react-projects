@@ -8,23 +8,23 @@ const initialValue = {
   error: '',
 };
 
-const reducer = (value, action) => {
+const reducer = (state, action) => {
   switch (action.type) {
     case 'GET_LISTS_SUCCESS':
       return {
-        ...value,
+        ...state,
         lists: action.payload,
         loading: false,
       };
     case 'GET_LISTS_ERROR':
       return {
-        ...value,
+        ...state,
         lists: [],
         loading: false,
         error: action.payload,
       };
     case 'ADD_ITEMS_SUCCESS': {
-      console.log('value: ', value);
+      console.log('state: ', state);
       console.log('action: ', action);
     }
     default:
@@ -54,7 +54,7 @@ function postData(dataSource, content) {
 }
 
 const ListsContextProvider = ({children}) => {
-  const [value, dispatch] = React.useReducer(reducer, initialValue);
+  const [state, dispatch] = React.useReducer(reducer, initialValue);
 
   const getListsRequest = () => {
     const result = fetchData('./data.json');
@@ -70,7 +70,7 @@ const ListsContextProvider = ({children}) => {
   }
 
   return (
-    <ListsContext.Provider value={{...value, getListsRequest, addItems}}>{children}</ListsContext.Provider>
+    <ListsContext.Provider value={{...state, getListsRequest, addItems}}>{children}</ListsContext.Provider>
   );
 };
 export default ListsContextProvider;
